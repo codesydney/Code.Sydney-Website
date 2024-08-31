@@ -41,24 +41,25 @@ import { parseBody } from "next-sanity/webhook";
 const secret = process.env.SANITY_WEBHOOK_SECRET;
 
 export async function POST(request) {
-  console.log(secret, "oooo secrets");
+  // console.log(request);
+  // console.log(secret, "oooo secrets");
   try {
-    const { isValidSignature, body } = await parseBody(
-      request,
-      process.env.SANITY_REVALIDATE_SECRET
-    );
+    // const { isValidSignature, body } = await parseBody(
+    //   request,
+    //   process.env.SANITY_REVALIDATE_SECRET
+    // );
 
-    if (!isValidSignature) {
-      const message = "Invalid signature";
-      return new Response(JSON.stringify({ message, isValidSignature, body }), {
-        status: 401,
-      });
-    }
+    // if (!isValidSignature) {
+    //   const message = "Invalid signature";
+    //   return new Response(JSON.stringify({ message, isValidSignature, body }), {
+    //     status: 401,
+    //   });
+    // }
 
-    if (!body?._type) {
-      const message = "Bad Request";
-      return new Response({ message, body }, { status: 400 });
-    }
+    // if (!body?._type) {
+    //   const message = "Bad Request";
+    //   return new Response({ message, body }, { status: 400 });
+    // }
 
     switch (body._type) {
       case "homepage":
