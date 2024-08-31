@@ -41,30 +41,9 @@ import { revalidateTag, revalidatePath } from "next/cache";
 const secret = process.env.SANITY_WEBHOOK_SECRET;
 
 export async function POST(request) {
-  const body = await request.text();
+  const body = await request.json();
   console.log("Received webhook:", body);
 
-  const signature = request.headers.get(SIGNATURE_HEADER_NAME);
-  const isValidSignature = await isValidSignature(body, signature, secret);
-  console.log("Is the signature valid?");
-
-  // const body = await readBody(req); // Read the body into a string
-  if (!(await isValidSignature(body, signature, secret))) {
-    NextResponse.json(
-      { success: false, message: "Invalid signature" },
-      { status: 401 }
-    );
-    return;
-  }
-  const jsonBody = JSON.parse(body);
-  // Check for secret to confirm this is a valid request
-  // if (body.secret !== process.env.SANITY_WEBHOOK_SECRET) {
-  //   return NextResponse.json({ message: "Invalid token" }, { status: 401 });
-  // }
-  console.log("The payload", jsonBody);
-  return NextResponse.json({
-    success: true,
-  });
   try {
     switch (body._type) {
       case "homepage":
@@ -114,17 +93,3 @@ export async function POST(request) {
     );
   }
 }
-
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
-
-// async function readBody(readable) {
-//   const chunks = [];
-//   for await (const chunk of readable) {
-//     chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
-//   }
-//   return Buffer.concat(chunks).toString("utf8");
-// }
