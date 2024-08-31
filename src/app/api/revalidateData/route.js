@@ -78,12 +78,12 @@ export async function POST(request) {
           throw new Error("Slug is required for dynamicPage revalidation");
         }
         console.log(`Revalidating dynamic page: ${body.slug.current}`);
-        revalidateTag(body.slug);
+        revalidateTag(body.slug.current);
         return NextResponse.json({
           revalidated: true,
           now: Date.now(),
           type: "dynamicPage",
-          slug: body.slug,
+          slug: body.slug.current,
         });
 
       case "navigation":
