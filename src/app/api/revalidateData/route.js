@@ -45,6 +45,8 @@ export async function POST(request) {
   console.log("Received webhook:", body);
 
   const signature = request.headers.get(SIGNATURE_HEADER_NAME);
+  const isValidSignature = await isValidSignature(body, signature, secret);
+  console.log("Is the signature valid?");
 
   // const body = await readBody(req); // Read the body into a string
   if (!(await isValidSignature(body, signature, secret))) {
@@ -76,7 +78,7 @@ export async function POST(request) {
           throw new Error("Slug is required for dynamicPage revalidation");
         }
         console.log(`Revalidating dynamic page: ${body.slug}`);
-        revalidatePath(`/${body.slug}`);
+        revalidateTag(body.slug);
         return NextResponse.json({
           revalidated: true,
           now: Date.now(),

@@ -44,7 +44,7 @@ export async function fetchNavigation(type = "main") {
   }`;
 
   return await client
-    .fetch(query, { type })
+    .fetch(query, { type }, { next: { tags: ["navigation"] } })
     .then((result) => result?.items || [])
     .catch((error) => {
       console.error("Failed to fetch navigation:", error);
