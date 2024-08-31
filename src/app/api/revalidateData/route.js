@@ -43,7 +43,9 @@ const secret = process.env.SANITY_WEBHOOK_SECRET;
 export async function POST(request) {
   // console.log(request);
   // console.log(secret, "oooo secrets");
+
   try {
+    const body = await request.json();
     // const { isValidSignature, body } = await parseBody(
     //   request,
     //   process.env.SANITY_REVALIDATE_SECRET
