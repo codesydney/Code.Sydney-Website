@@ -1,30 +1,26 @@
-import navLink from "./navLink.js";
-import header from "./headerNavigation.js";
-import internalLink from "./internalLink.js";
-import homePage from "./homePage.js";
-import homeHero from "./homeHero.js";
-import statisticsCard from "./statisticsCard.js";
-import iconDropdown from "./iconDropdown.js";
-import statisticsSection from "./statisticsSection.js";
-import projectsSection from "./projectsSection.js";
-import projectCard from "./projectCard.js";
-import FriendsSection from "./FriendsSection.js";
-import testimonialCard from "./testimonialCard.js";
-import testimonialsSection from "./testimonialsSection.js";
-import galleryImage from "./galleryImage.js";
-import gallerySection from "./gallerySection.js";
-import pageHeader from "./pageHeader.js";
-import aboutPage from "./aboutPage.js";
-import techies4goodPage from "./techies4goodPage.js";
-import apps4GoodPage from "./apps4GoodPage.js";
-import teamPage from "./teamPage.js";
-import techie from "./techie.js";
-import app from "./app.js";
-import portfoliosPage from "./portfoliosPage.js";
-import portfolio from "./portfolio.js";
-import teamMember from "./teamMember.js";
-import blueHexGroup from "./blueHexGroup.js";
-import blueHexPage from "./blueHexPage.js";
+import navLink from "./shared/navLink.js";
+import header from "./shared/headerNavigation.js";
+import internalLink from "./shared/internalLink.js";
+import homePage from "./homePage/homePage.js";
+import homeHero from "./homePage/components/HeroSection/homeHero.js";
+import statisticsCard from "./homePage/components/StatisticsSection/statisticsCard.js";
+import iconDropdown from "./shared/iconDropdown.js";
+import statisticsSection from "./homePage/components/StatisticsSection/statisticsSection.js";
+import projectsSection from "./homePage/components/ProjectsSection/projectsSection.js";
+import projectCard from "./homePage/components/ProjectsSection/projectCard.js";
+import FriendsSection from "./homePage/components/FriendsSection/FriendsSection.js";
+import testimonialCard from "./homePage/components/TestimonialsSection/testimonialCard.js";
+import testimonialsSection from "./homePage/components/TestimonialsSection/testimonialsSection.js";
+import galleryImage from "./homePage/components/GallerySection/galleryImage.js";
+import gallerySection from "./homePage/components/GallerySection/gallerySection.js";
+import pageHeader from "./shared/pageHeader.js";
+import teamMember from "./DynamicPage/components/Team/teamMember.js";
+import TeamSection from "./DynamicPage/components/Team/TeamSection.js";
+import dynamicPage from "./DynamicPage/dynamicPage.js";
+import SlidingCard from "./DynamicPage/components/SlidingCard.js";
+import SlidingCards from "./DynamicPage/components/SlidingCards.js";
+import pageMeta from "./shared/pageMeta.js";
+import CallToActionSection from "./DynamicPage/components/CallToAction/CallToActionSection.js";
 
 export const schema = {
   types: [
@@ -44,16 +40,12 @@ export const schema = {
     galleryImage,
     gallerySection,
     pageHeader,
-    aboutPage,
-    techies4goodPage,
-    apps4GoodPage,
-    teamPage,
-    techie,
-    app,
-    portfoliosPage,
-    portfolio,
+    TeamSection,
     teamMember,
-    blueHexGroup,
-    blueHexPage,
+    dynamicPage,
+    SlidingCard,
+    SlidingCards,
+    pageMeta,
+    CallToActionSection,
   ],
 };

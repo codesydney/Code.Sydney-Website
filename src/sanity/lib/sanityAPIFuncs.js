@@ -1,78 +1,7 @@
 import { client } from "./client";
 
 export const fetchHomepageData = async () => {
-  const homeDataQuery = `
-    *[_type == "homepage"]{
-      hero {
-        aboveTitle,
-        title,
-        moto,
-        intro,
-        internalLink {
-          href,
-          label
-        },
-        image {
-          asset->{
-            url
-          },
-          alt
-        }
-      },
-      statisticsSection {
-        mainTitle,
-        pseudoTitle,
-        cards[] {
-          icons,
-          number,
-          text
-        }
-      },
-      friendsSection {
-        mainTitle,
-        pseudoTitle,
-        logoCarousel[] {
-          asset->{
-            url
-          },
-          alt
-        }
-      },
-      projectsSection {
-        mainTitle,
-        pseudoTitle,
-        belowTitleText,
-        projects[] {
-          organisation,
-          projectType,
-          projectDescription,
-          projectSponserLinkUrl,
-          projectImage
-        }
-      },
-      testimonialsSection {
-        mainTitle,
-        pseudoTitle,
-        testimonials[] {
-          name,
-          organisation,
-          jobTitle,
-          review,
-        }
-      },
-      gallerySection {
-        mainTitle, 
-        pseudoTitle,
-        galleryImages[] {
-          asset->{
-            url
-          },
-          alt,
-          caption,
-        }
-      }
-    }[0]
-  `;
+  const homeDataQuery = `*[_type == "homepage"][0]`;
 
   const data = await client.fetch(
     homeDataQuery,
@@ -83,6 +12,45 @@ export const fetchHomepageData = async () => {
   );
   return data;
 };
+
+export const fetchDynamicPageData = async (slug) => {
+  const query = `*[_type == "dynamicPage" && slug.current == $slug][0]`;
+  return client.fetch(
+    query,
+    { slug },
+    {
+      next: { tags: [slug] },
+    }
+  );
+};
+
+export const fetchContactPage = async () => {
+  const query = `*[_type == "contactPage"][0]`;
+  return client.fetch(
+    query,
+    {},
+    {
+      next: { tags: ["contactPage"], revalidate: 3600 },
+    }
+  );
+};
+
+export async function fetchNavigation(type = "main") {
+  const query = `*[_type == "navigation" && title == $type][0]{
+    "items": items[]{
+      label,
+      "slug": link->slug.current
+    }
+  }`;
+
+  return await client
+    .fetch(query, { type })
+    .then((result) => result?.items || [])
+    .catch((error) => {
+      console.error("Failed to fetch navigation:", error);
+      return [];
+    });
+}
 
 export const fetchBlueHexPageData = async () => {
   const blueHexQuery = `

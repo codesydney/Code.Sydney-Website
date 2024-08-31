@@ -21,7 +21,7 @@ const SvgCurve = () => {
   );
 };
 
-export default function MobileDropdown({ navLinks, isActive, pathname }) {
+export default function MobileDropdown({ navItems, isActive, pathname }) {
   const menuVariants = {
     closed: { x: "-100%" },
     open: { x: 0 },
@@ -38,26 +38,40 @@ export default function MobileDropdown({ navLinks, isActive, pathname }) {
     >
       <motion.ul className="h-full bg-custom-dark flex flex-col min-w-[300px] items-stretch gap-4 p-8 pt-[100px] relative">
         {/* <SvgCurve /> */}
-        {navLinks.map((link, index) => (
+        {navItems.map((item, index) => (
           <motion.li
             key={index}
             variants={linkVariants}
-            className={`py-2 px-1 hover:bg-custom-primary/5 rounded flex justify-stretch ${
-              index === navLinks.length - 1 ? "mt-auto" : ""
-            } ${
-              isActive(link.href)
+            className={`py-2 px-1 hover:bg-custom-primary/5 rounded flex justify-stretch  ${
+              isActive(`/${item.slug}`)
                 ? "bg-custom-primary/25 text-custom-primary"
                 : ""
             }`}
           >
             <NavLink
-              href={link.href}
-              text={link.text}
+              href={`/${item.slug}`}
+              text={item.label}
               isActive={false}
-              isButtonStyle={index !== navLinks.length - 1}
+              isButtonStyle={true}
             />
           </motion.li>
         ))}
+        <motion.li
+          key="contact page link"
+          variants={linkVariants}
+          className={`py-2 px-1 hover:bg-custom-primary/5 rounded flex justify-stretch mt-auto ${
+            isActive(`/contact`)
+              ? "bg-custom-primary/25 text-custom-primary"
+              : ""
+          }`}
+        >
+          <NavLink
+            href={`/contact`}
+            text="Contact"
+            isActive={false}
+            isButtonStyle={false}
+          />
+        </motion.li>
       </motion.ul>
     </motion.div>
   );

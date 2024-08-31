@@ -35,7 +35,7 @@ const NavLinks = [
   },
 ];
 
-export default function Header({}) {
+export default function Header({ navItems }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const isActive = (href) => pathname === href;
@@ -54,6 +54,7 @@ export default function Header({}) {
     }
     setMenuOpen(!menuOpen);
   };
+
   return (
     <header className="p-4 md:p-6 w-full flex justify-between items-center lg:py-8 lg:px-10 relative z-50 max-w-[1920px] mx-auto">
       <Link href="/" className="flex relative z-20 gap-2 items-center">
@@ -77,25 +78,33 @@ export default function Header({}) {
         </button>
         {/* Large Nav - hidden on device < 1024px */}
         <ul className="hidden right-[100%] top-[100%] h-[calc(100vh-72px)] bg-custom-light w-full z-1000 lg:static lg:-w-unset lg:bg-inherit lg:h-fit lg:flex flex-col lg:flex-row p-12 lg:p-0 items-center gap-4 lg:gap-6">
-          {NavLinks &&
-            NavLinks.map((link, index) => {
+          {navItems &&
+            navItems.map((item, index) => {
               return (
                 <li key={index}>
                   <NavLink
-                    isActive={isActive(link.href)}
-                    href={link.href}
-                    text={link.text}
-                    isButtonStyle={index !== NavLinks.length - 1}
+                    isActive={isActive(`/${item.slug}`)}
+                    href={`${item.slug}`}
+                    text={item.label}
+                    isButtonStyle={true}
                   />
                 </li>
               );
             })}
+          <li key={"ContactPage"}>
+            <NavLink
+              isActive={isActive(`/contact`)}
+              href={`/contact`}
+              text="Contact"
+              isButtonStyle={false}
+            />
+          </li>
         </ul>
         {/* Mobile Nav hidden on devices > 1024px */}
         <AnimatePresence>
           {menuOpen && (
             <MobileDropdown
-              navLinks={NavLinks}
+              navItems={navItems}
               isActive={isActive}
               pathname={pathname}
             />

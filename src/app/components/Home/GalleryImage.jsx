@@ -1,13 +1,10 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
 export default function GalleryImage({ image, handleToggleModal }) {
-  const {
-    asset: { url },
-    alt,
-    caption,
-  } = image;
+  const { asset, alt, caption } = image;
 
   return (
     <div
@@ -15,7 +12,7 @@ export default function GalleryImage({ image, handleToggleModal }) {
       onClick={() => handleToggleModal(image)}
     >
       <Image
-        src={url}
+        src={urlFor(asset).url()}
         alt={alt}
         height={300}
         width={300}

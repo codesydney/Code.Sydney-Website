@@ -7,7 +7,7 @@ import FooterCopyright from "./FooterCopyright";
 import FooterSocialLinks from "./FooterSocialLinks";
 import { usePathname } from "next/navigation";
 
-export default function Footer() {
+export default function Footer({ navItems }) {
   const pathname = usePathname();
   const isActive = (href) => pathname === href;
   return (
@@ -34,7 +34,7 @@ export default function Footer() {
               Technology for Good.
             </p>
           </div>
-          <FooterWebsiteLinks isActive={isActive} />
+          <FooterWebsiteLinks navItems={navItems} isActive={isActive} />
           <FooterContactLinks isActive={isActive} />
           <FooterSocialLinks isActive={isActive} />
         </nav>

@@ -6,9 +6,8 @@ import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import SectionTitle from "../shared/SectionTitle";
 import GalleryImage from "./GalleryImage";
 import { IoIosCloseCircle } from "react-icons/io";
-
+import { urlFor } from "@/sanity/lib/image";
 const Column = ({ images, y = 0, colNumber, handleToggleModal }) => {
-  console.log(y);
   if (y > 0) {
     y = 0;
   }
@@ -38,6 +37,7 @@ export default function GallerySection({ galleryData }) {
     target: container,
     offset: ["start end", "-0.2 start"],
   });
+
   const y = useTransform(
     scrollYProgress,
     [0, 1],
@@ -109,7 +109,7 @@ export default function GallerySection({ galleryData }) {
               <IoIosCloseCircle className="w-8 h-8 text-custom-light group-hover:text-custom-primary duration-200" />
             </button>
             <img
-              src={modalImage.asset.url}
+              src={urlFor(modalImage.asset).url()}
               alt={modalImage.alt}
               className="object-contain w-[100%] h-auto"
             />
