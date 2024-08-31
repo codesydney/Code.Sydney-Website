@@ -50,7 +50,10 @@ export async function POST(request) {
 
   // const body = await readBody(req); // Read the body into a string
   if (!(await isValidSignature(body, signature, secret))) {
-    res.status(401).json({ success: false, message: "Invalid signature" });
+    NextResponse.json(
+      { success: false, message: "Invalid signature" },
+      { status: 401 }
+    );
     return;
   }
   const jsonBody = JSON.parse(body);
