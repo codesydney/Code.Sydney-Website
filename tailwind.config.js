@@ -32,6 +32,10 @@ module.exports = {
           "0%": { opacity: "0", transform: "translateY(-10px)" },
           "100%": { opacity: "0", transform: "translateY(0)" },
         },
+        rotate3d: {
+          "0%": { transform: "rotateY(0deg)" },
+          "100%": { transform: "rotateY(360deg)" },
+        },
         carouselSlide: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-100%)" },
@@ -66,6 +70,7 @@ module.exports = {
         width: "width",
       },
       animation: {
+        rotate3d: "rotate3d 5s linear infinite",
         fadeIn: "fadeIn 0.3s ease-out",
         carouselSlide: "carouselSlide 60s infinite linear",
         showProjectContentOrganisation:

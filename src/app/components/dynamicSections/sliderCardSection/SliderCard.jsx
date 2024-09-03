@@ -1,6 +1,6 @@
 import { FaLinkedin, FaFacebook, FaGlobe, FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { motion, useAnimate } from "framer-motion";
+import { motion } from "framer-motion";
 import LinkButton from "@/app/components/shared/LinkButton";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -20,14 +20,10 @@ export default function SlidingCard({
   index,
   activeIndex,
   isLargeScreen,
-  isLastCard,
-  direction,
+  handleMakeCurrentCard,
 }) {
-  const [showText, setShowText] = useState(false);
   const { title, description, link, image, id } = slidingCardData;
   const [isActive, setIsActive] = useState(isCardActive);
-  // const [scope, animate] = useAnimate();
-  // const isActive = index === activeIndex ? true : false;
 
   useEffect(() => {
     setIsActive(isCardActive);
@@ -53,7 +49,10 @@ export default function SlidingCard({
           isActive ? "lg:grid-cols-2" : ""
         }`}
       >
-        <div className="md:max-w-[400px] lg:w-[400px]">
+        <div
+          onClick={() => handleMakeCurrentCard(index)}
+          className="md:max-w-[400px] lg:w-[400px] lg:cursor-pointer"
+        >
           <Image
             width={400}
             height={400}

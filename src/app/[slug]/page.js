@@ -5,19 +5,21 @@ import { PortableText } from "next-sanity";
 import PageChange from "../components/shared/PageChange";
 import TeamSection from "../components/dynamicSections/teamSection/TeamSection";
 import CallToActionDynamic from "../components/dynamicSections/callToActionSection/CallToActionDynamic";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const pageData = await fetchDynamicPageData(params.slug);
-  const metadata = pageData.metadata || {};
+
+  const metadata = pageData?.metadata || {};
 
   return {
-    title: metadata.title || pageData.title || "Code.Sydney",
+    title: metadata.title || "Code.Sydney",
     description:
       metadata.description ||
       "Code.Sydney is a volunteering organisation that supports beginner developers transition to gain paid employment while helping non-profit and charity organisations with their app needs.",
     keywords: metadata.keywords || [],
     openGraph: {
-      title: metadata.ogTitle || metadata.title || pageData.title,
+      title: metadata.ogTitle || metadata.title || "Code.Sydney",
       description: metadata.ogDescription || metadata.description,
       images: metadata.ogImage
         ? [
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary_large_image",
-      title: metadata.ogTitle || metadata.title || pageData.title,
+      title: metadata.ogTitle || metadata.title || "Code.Sydney",
       description: metadata.ogDescription || metadata.description,
       images: metadata.ogImage ? [metadata.ogImage.url] : [],
     },
@@ -50,6 +52,9 @@ export async function generateMetadata({ params }) {
 export default async function DynamicPage({ params }) {
   const pageData = await fetchDynamicPageData(params.slug);
   console.log(pageData);
+  if (!pageData) {
+    notFound();
+  }
   return (
     <>
       <PageChange />
