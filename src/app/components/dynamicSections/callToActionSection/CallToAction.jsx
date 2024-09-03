@@ -1,6 +1,4 @@
 import Spline from "@splinetool/react-spline/next";
-import Button from "../Button";
-import LinkButton from "../LinkButton";
 
 const CallToAction = ({ title, children }) => {
   return (

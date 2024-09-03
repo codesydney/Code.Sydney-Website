@@ -1,6 +1,5 @@
-import { urlFor } from "@/utils/sanity";
+import { urlFor } from "@/sanity/lib/image";
 import SectionTitle from "../shared/SectionTitle";
-import Image from "next/image";
 
 export default function FriendsSection({ friendsData }) {
   const { mainTitle, pseudoTitle, logoCarousel } = friendsData;

@@ -6,15 +6,45 @@ import { fetchNavigation } from "@/sanity/lib/sanityAPIFuncs";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
+  metadataBase: new URL("https://code.sydney"),
   title: "Code.Sydney",
   description:
     "Code.Sydney is a volunteering organisation that supports beginner developers transition to gain paid employment while helping non-profit and charity organisations with their app needs.",
+  openGraph: {
+    title: "Code.Sydney",
+    description:
+      "Code.Sydney is a volunteering organisation that supports beginner developers transition to gain paid employment while helping non-profit and charity organisations with their app needs.",
+    images: [
+      {
+        url: "/images/logo-codesyd.png",
+        width: 1200,
+        height: 630,
+        alt: "Code.Sydney Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Code.Sydney",
+    description:
+      "Code.Sydney is a volunteering organisation that supports beginner developers transition to gain paid employment while helping non-profit and charity organisations with their app needs.",
+    images: [
+      {
+        url: "/images/logo-codesyd.png",
+        width: 1200,
+        height: 630,
+        alt: "Code.Sydney Logo",
+      },
+    ],
+  },
 };
+
+// NEED TO SET UP BACKUP DATA FOR HEADER NAV ITEMS AND FOOTER NAV ITEMS
 
 export default async function RootLayout({ children }) {
   const headerNavItems = await fetchNavigation("Main Navigation");
   const footerNavItems = await fetchNavigation("Footer Navigation");
-  console.log(headerNavItems, "The header nav items");
+
   return (
     <html lang="en" className="dark overflow-x-hidden">
       <body className={`${inter.className} overflow-x-hidden relative`}>

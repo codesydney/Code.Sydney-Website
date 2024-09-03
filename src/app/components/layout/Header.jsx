@@ -8,33 +8,6 @@ import NavLink from "./NavLink";
 import MobileDropdown from "./MobileMenu";
 import HamburgerIcon from "./Hamburger";
 
-const NavLinks = [
-  {
-    text: "BlueHex",
-    href: "/bluehex",
-  },
-  {
-    text: "Techies4Good",
-    href: "/techies4good",
-  },
-  {
-    text: "Apps4Good",
-    href: "/apps4good",
-  },
-  {
-    text: "Portfolios",
-    href: "/portfolios",
-  },
-  {
-    text: "Team",
-    href: "/team",
-  },
-  {
-    text: "Contact",
-    href: "/contact",
-  },
-];
-
 export default function Header({ navItems }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();

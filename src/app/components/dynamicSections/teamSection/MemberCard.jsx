@@ -14,7 +14,6 @@ const MemberCard = ({ member }) => {
 
   useEffect(() => {
     if (isExpanded) {
-      console.log("Should be setting body to hidden");
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
     } else {

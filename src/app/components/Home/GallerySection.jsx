@@ -7,6 +7,7 @@ import SectionTitle from "../shared/SectionTitle";
 import GalleryImage from "./GalleryImage";
 import { IoIosCloseCircle } from "react-icons/io";
 import { urlFor } from "@/sanity/lib/image";
+
 const Column = ({ images, y = 0, colNumber, handleToggleModal }) => {
   if (y > 0) {
     y = 0;

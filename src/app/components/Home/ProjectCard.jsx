@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { urlFor } from "@/utils/sanity";
+import { urlFor } from "@/sanity/lib/image";
 import LinkButton from "../shared/LinkButton";
 
 const indexOne =

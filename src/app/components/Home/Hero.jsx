@@ -1,6 +1,4 @@
-import Link from "next/link";
 import Image from "next/image";
-import Button from "../shared/Button";
 import LinkButton from "../shared/LinkButton";
 
 export default function Hero({ hero }) {
@@ -12,14 +10,6 @@ export default function Hero({ hero }) {
         {aboveTitle && <span className="lg:text-xl font-semibold">We are</span>}
 
         <h1 className="text-4xl sm:text-5xl font-extrabold mb-2 md:text-6xl xl:text-8xl flex gap-2 items-center bg-gradient-to-r from-custom-primary via-custom-primary via-10% to-custom-light bg-clip-text text-transparent">
-          {/* <Image
-            className="w-10"
-            src="/images/logo-codesyd.webp"
-            alt="Code.sydney Logo"
-            width={50}
-            height={50}
-            priority
-          /> */}
           {title ? title : "Code.Sydney"}
         </h1>
         {moto && (

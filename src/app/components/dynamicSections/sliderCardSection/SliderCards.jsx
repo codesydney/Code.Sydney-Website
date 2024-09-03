@@ -20,7 +20,6 @@ export default function SlidingCards({ slidingCardsData }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log(windowWidth);
   const handlePrevClick = () => {
     if (currentActiveIndex === 0) {
       setCurrentActiveIndex(slidingCards.length - 1);

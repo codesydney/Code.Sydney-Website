@@ -17,18 +17,21 @@ const PageChange = () => {
 
     animateDivs.forEach((_, index) => {
       timeouts.push(
-        setTimeout(() => {
-          setAnimateDivs((prev) => {
-            const newAnimateDivs = [...prev];
-            newAnimateDivs[index] = true;
-            return newAnimateDivs;
-          });
-          if (index === animateDivs.length - 1 && containerRef.current) {
-            setTimeout(() => {
-              containerRef.current.style.display = "none";
-            }, 1000);
-          }
-        }, 500 + index * 100)
+        setTimeout(
+          () => {
+            setAnimateDivs((prev) => {
+              const newAnimateDivs = [...prev];
+              newAnimateDivs[index] = true;
+              return newAnimateDivs;
+            });
+            if (index === animateDivs.length - 1 && containerRef.current) {
+              setTimeout(() => {
+                containerRef.current.style.display = "none";
+              }, 1000);
+            }
+          },
+          500 + index * 100
+        )
       );
     });
     return () =>
@@ -55,6 +58,7 @@ const PageChange = () => {
                 alt="Code.Sydney Logo"
                 width={100}
                 height={100}
+                priority
               />
               <div className="text-4xl font-bold bg-gradient-to-r from-cs-syd-5 via-cs-syd-5 via-20% to-custom-light bg-clip-text text-transparent">
                 Code.Sydney

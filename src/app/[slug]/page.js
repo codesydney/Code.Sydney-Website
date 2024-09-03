@@ -42,16 +42,12 @@ export async function generateMetadata({ params }) {
       index: metadata.noIndex ? false : true,
       follow: metadata.noFollow ? false : true,
     },
-    alternates: {
-      canonical:
-        metadata.canonicalUrl || `https://www.code.sydney/${params.slug}`,
-    },
   };
 }
 
 export default async function DynamicPage({ params }) {
   const pageData = await fetchDynamicPageData(params.slug);
-  console.log(pageData);
+
   if (!pageData) {
     notFound();
   }

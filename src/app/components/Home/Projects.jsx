@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { GrFormNextLink } from "react-icons/gr";
 import ProjectCard from "./ProjectCard";
 import ProjectSectionNav from "./ProjectSectionNav";
 

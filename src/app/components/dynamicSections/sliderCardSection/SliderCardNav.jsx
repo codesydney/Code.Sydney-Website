@@ -9,7 +9,7 @@ const SlidingCardsNav = ({
   handlePrevClick,
 }) => {
   const emptyArray = new Array(slidingCardsLength).fill(true);
-  console.log(emptyArray);
+
   return (
     <div className="w-[200px] none xl:block">
       <div className="flex gap-1 mb-5">

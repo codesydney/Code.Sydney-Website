@@ -1,5 +1,4 @@
 export default function SectionTitle({ psuedoTitle, children }) {
-  console.log("titles", psuedoTitle);
   return (
     <div className="relative mb-4">
       <span className="block opacity-0 md:opacity-100 text-center text-outline text-transparent  font-extrabold tracking-wider text-6xl lg:text-8xl w-full">
