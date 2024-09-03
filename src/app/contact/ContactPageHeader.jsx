@@ -10,9 +10,9 @@ const ContactPageHeader = () => {
         <PiHandWavingDuotone className="text-custom-primary animate-wavingHand" />
       </h1>
       <p className="font-light text-center max-w-[800px]">
-        Get in touch with us today. We're here to help and eager to hear from
-        you. Whether you have a question, feedback, or just want to say hello,
-        don't hesitate to reach out.
+        Get in touch with us today. We&apos;re here to help and eager to hear
+        from you. Whether you have a question, feedback, or just want to say
+        hello, don&apos;t hesitate to reach out!
       </p>
     </section>
   );
