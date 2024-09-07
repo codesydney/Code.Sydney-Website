@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
+import emailjs from "@emailjs/browser";
 
 const contactSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -42,6 +43,7 @@ const ContactPageForm = () => {
     setFormError("");
     setFormSuccess("");
     const formEl = event.target;
+    console.log(formEl);
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     try {
@@ -52,6 +54,7 @@ const ContactPageForm = () => {
         "Thank you your submission, you will hear back from us shortly"
       );
     } catch (error) {
+      console.error(error);
       setFormError(
         "There was an error with the form submission, please email us directly at info@code.sydney"
       );
