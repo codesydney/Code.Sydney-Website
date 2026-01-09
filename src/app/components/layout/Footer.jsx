@@ -39,6 +39,11 @@ export default function Footer({ navItems }) {
           <FooterSocialLinks isActive={isActive} />
         </nav>
         <FooterCopyright />
+        <div className="pt-4 mt-4">
+          <p className="text-center text-custom-light/70 font-light text-xs max-w-4xl mx-auto leading-relaxed">
+            We acknowledge and pay respects to the First Nations People of Australia, the land in which we live and work. We recognise the strength, resilience and capacity of Aboriginal people and pay respects to elders past, present and emerging.
+          </p>
+        </div>
       </div>
       <div className="w-[80vw] absolute h-[100px] bg-gradient-to-b from-custom-primary/20 via-custom-primary/50  to-custom-primary rounded-full blur-[100px] bottom-[0%] left-[50%] translate-x-[-50%]"></div>
     </footer>
